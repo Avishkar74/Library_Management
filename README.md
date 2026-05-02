@@ -343,10 +343,4 @@ This project is licensed under the **MIT License** - see the LICENSE file for de
 
 ---
 
-<div align="center">
 
-⭐ If you found this project helpful, please consider giving it a star! ⭐
-
-Made with ❤️ by the development team
-
-</div>
