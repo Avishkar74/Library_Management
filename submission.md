@@ -181,6 +181,6 @@ mvnw.cmd test
 
 Please replace the placeholder below with your repository URL after you push the project:
 
-GitHub: 
+GitHub: https://github.com/Avishkar74/Library_Management
 
 ---

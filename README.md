@@ -1,142 +1,125 @@
-# 📚 Library Management System
+# Library Management Application
 
-<div align="center">
+A comprehensive library catalog system built on Spring Boot, enabling organizations to maintain book inventory and author records with relational database integrity.
 
-![Java](https://img.shields.io/badge/Java-17-orange?style=flat-square&logo=java)
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.0.6-green?style=flat-square&logo=spring-boot)
-![Maven](https://img.shields.io/badge/Maven-3.8+-blue?style=flat-square&logo=apache-maven)
-![H2 Database](https://img.shields.io/badge/Database-H2%20In--Memory-lightblue?style=flat-square&logo=database)
-![License](https://img.shields.io/badge/License-MIT-brightgreen?style=flat-square)
-![Status](https://img.shields.io/badge/Status-Active-success?style=flat-square)
-
-**A modern, feature-rich library management system built with Spring Boot & JSP**
-
-[Features](#-features) • [Tech Stack](#-tech-stack) • [Getting Started](#-getting-started) • [Project Structure](#-project-structure) • [API Endpoints](#-api-endpoints)
-
-</div>
+**Stack:** Java 17 | Spring Boot 4.0.6 | Hibernate ORM | H2 Database | JSP | Maven
 
 ---
 
-## ✨ Features
+## Overview
 
-- 📖 **Book Management** - Add, edit, view, and manage books with author associations
-- ✍️ **Author Management** - Create and manage book authors with nationality tracking
-- 🔗 **Book-Author Relations** - Establish many-to-one relationships between books and authors
-- 💾 **Persistent Storage** - H2 in-memory database with automatic schema generation via Hibernate
-- 🎨 **Modern UI** - Responsive JSP frontend with gradient designs and smooth interactions
-- 🔍 **Custom Queries** - INNER JOIN queries for comprehensive book-author data retrieval
-- ✅ **Input Validation** - Jakarta Bean Validation for all entity inputs
-- 🌐 **RESTful Architecture** - Clean separation of concerns with MVC pattern
+This web-based application provides a structured approach to cataloging books and authors. It allows users to register new titles, associate them with creators, track bibliographic details, and query the combined dataset through an intuitive interface.
 
----
+### Core Capabilities
 
-## 🛠️ Tech Stack
-
-<table>
-  <tr>
-    <td align="center"><strong>Backend</strong></td>
-    <td align="center"><strong>Frontend</strong></td>
-    <td align="center"><strong>Database</strong></td>
-    <td align="center"><strong>Build Tool</strong></td>
-  </tr>
-  <tr>
-    <td>
-      • Spring Boot 4.0.6<br/>
-      • Spring Web MVC<br/>
-      • Spring Data JPA<br/>
-      • Hibernate ORM 7.2<br/>
-      • Lombok
-    </td>
-    <td>
-      • JSP (Jakarta Server Pages)<br/>
-      • JSTL (Tag Libraries)<br/>
-      • HTML5<br/>
-      • CSS3 (Gradients & Animations)<br/>
-      • Responsive Design
-    </td>
-    <td>
-      • H2 Database<br/>
-      • HikariCP Connection Pool<br/>
-      • DDL Auto Schema Generation
-    </td>
-    <td>
-      • Apache Maven 3.14<br/>
-      • Java 17<br/>
-      • Spring Boot Maven Plugin
-    </td>
-  </tr>
-</table>
+- **Catalog Management** — Store and organize book records including title, genre, publication year, and price information
+- **Creator Registry** — Maintain author profiles with name, nationality, and contact details
+- **Relational Linking** — Define the connection between books and their authors through foreign key relationships
+- **Data Retrieval** — Execute complex queries combining book and author information via repository methods
+- **Form Processing** — User-friendly web forms for creating and modifying records with error handling
+- **Automatic Setup** — Database initialization with sample records upon application startup
 
 ---
 
-## 🚀 Getting Started
+## Technology Foundation
 
-### Prerequisites
+**Server-Side Framework**
+- Spring Boot 4.0.6 as the application runtime environment
+- Spring MVC for request routing and response handling
+- Spring Data JPA for data persistence abstraction
+- Hibernate 7.2 as the object-relational mapping provider
+- Lombok for reducing boilerplate code
 
-- **Java 17+** - [Download JDK](https://adoptium.net/)
-- **Apache Maven 3.8+** - [Download Maven](https://maven.apache.org/)
+**Presentation Layer**
+- Jakarta Server Pages (JSP) for server-side template rendering
+- Jakarta Standard Tag Library (JSTL) for dynamic content generation
+- HTML5 markup with CSS3 styling
+- Responsive layouts and user interface components
 
-### Installation & Run
+**Data Layer**
+- H2 Database for in-memory data storage
+- HikariCP for connection pooling and resource management
+- Automatic schema initialization and migration
 
-1. **Clone the repository**
+**Build & Compilation**
+- Maven 3.14+ for dependency management and build orchestration
+- Java 17 runtime and compiler
+- Spring Boot Maven Plugin for packaging and execution
+
+---
+
+## Setup & Execution
+
+### System Requirements
+
+- Java Development Kit (JDK) 17 or later
+- Maven 3.8 or higher
+- A terminal or command-line interface
+
+### Quick Start Guide
+
+1. **Obtain the source code**
    ```bash
    git clone https://github.com/yourusername/library-management.git
    cd library-management
    ```
 
-2. **Build the project**
+2. **Compile and package**
    ```bash
    mvn clean install
    ```
 
-3. **Run the application**
+3. **Launch the application**
    ```bash
    mvn spring-boot:run
    ```
 
-4. **Access the application**
+4. **Open in web browser**
    ```
-   Open your browser and navigate to: http://localhost:8080
+   http://localhost:8080
    ```
 
-### Building for Production
+### Production Deployment
 
+For standalone execution:
 ```bash
 mvn clean package
 java -jar target/library-management-0.0.1-SNAPSHOT.war
 ```
 
+The application will initialize with sample data and become ready to serve requests within seconds.
+
 ---
 
-## 📁 Project Structure
+## Directory Organization
 
 ```
 library-management/
 ├── src/
 │   ├── main/
 │   │   ├── java/com/library/library_management/
-│   │   │   ├── controller/          # REST Controllers
+│   │   │   ├── controller/          # Request handlers
 │   │   │   │   ├── BookController.java
 │   │   │   │   ├── AuthorController.java
 │   │   │   │   └── HomeController.java
-│   │   │   ├── service/             # Business Logic
+│   │   │   ├── service/             # Business operations
 │   │   │   │   ├── BookService.java
 │   │   │   │   └── AuthorService.java
-│   │   │   ├── repository/          # Data Access Layer
+│   │   │   ├── repository/          # Data access methods
 │   │   │   │   ├── BookRepository.java
 │   │   │   │   └── AuthorRepository.java
-│   │   │   ├── entity/              # JPA Entities
+│   │   │   ├── entity/              # Domain model classes
 │   │   │   │   ├── Book.java
 │   │   │   │   └── Author.java
-│   │   │   ├── dto/                 # Data Transfer Objects
+│   │   │   ├── dto/                 # Transfer objects
 │   │   │   │   └── BookAuthorDTO.java
-│   │   │   ├── config/              # Configuration
+│   │   │   ├── config/              # Setup and initialization
+│   │   │   │   ├── H2ConsoleConfig.java
 │   │   │   │   └── DataSeeder.java
 │   │   │   └── LibraryManagementApplication.java
 │   │   ├── resources/
-│   │   │   ├── application.yaml
-│   │   │   └── static/
-│   │   └── webapp/WEB-INF/views/    # JSP Templates
+│   │   │   └── application.yaml
+│   │   └── webapp/WEB-INF/views/    # Page templates
 │   │       ├── books/
 │   │       │   ├── list.jsp
 │   │       │   ├── add.jsp
@@ -149,47 +132,50 @@ library-management/
 │       └── java/com/library/library_management/
 │           ├── repository/
 │           └── service/
+├── screenshots/
+│   └── (application screenshots for documentation)
 ├── pom.xml
+├── submission.md
 └── README.md
 ```
 
 ---
 
-## 🔌 API Endpoints
+## Request Handling Routes
 
-### 📖 Book Endpoints
+### Book Catalog Endpoints
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/books` | Display all books with authors |
-| GET | `/books/add` | Show book creation form |
-| POST | `/books` | Create a new book |
-| GET | `/books/edit/{id}` | Show book edit form |
-| POST | `/books/update` | Update an existing book |
-| GET | `/books/delete/{id}` | Delete a book |
+| HTTP Verb | Path | Action |
+|-----------|------|--------|
+| GET | `/books` | Retrieve and display all book records |
+| GET | `/books/add` | Render form for adding new book |
+| POST | `/books` | Submit new book record |
+| GET | `/books/edit/{id}` | Render modification form for existing book |
+| POST | `/books/update` | Submit updated book record |
+| GET | `/books/delete/{id}` | Remove book from database |
 
-### ✍️ Author Endpoints
+### Author Registry Endpoints
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/authors` | Display all authors |
-| GET | `/authors/add` | Show author creation form |
-| POST | `/authors` | Create a new author |
-| GET | `/authors/edit/{id}` | Show author edit form |
-| POST | `/authors/update` | Update an existing author |
-| GET | `/authors/delete/{id}` | Delete an author |
+| HTTP Verb | Path | Action |
+|-----------|------|--------|
+| GET | `/authors` | Retrieve and display all author records |
+| GET | `/authors/add` | Render form for adding new author |
+| POST | `/authors` | Submit new author record |
+| GET | `/authors/edit/{id}` | Render modification form for existing author |
+| POST | `/authors/update` | Submit updated author record |
+| GET | `/authors/delete/{id}` | Remove author from database |
 
-### 🏠 Home
+### Navigation
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/` | Landing page |
+| HTTP Verb | Path | Action |
+|-----------|------|--------|
+| GET | `/` | Display landing page |
 
 ---
 
-## 📊 Database Schema
+## Data Model & Schema
 
-### Authors Table
+### Authors Table Schema
 ```sql
 CREATE TABLE authors (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
@@ -199,7 +185,7 @@ CREATE TABLE authors (
 );
 ```
 
-### Books Table
+### Books Table Schema
 ```sql
 CREATE TABLE books (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
@@ -212,12 +198,21 @@ CREATE TABLE books (
 );
 ```
 
+### Relationship Model
+
+The schema implements a one-to-many relationship:
+- One author can be associated with multiple books
+- Each book must reference exactly one author
+- Foreign key constraint ensures referential integrity
+
 ---
 
-## 🎯 Key Features Explained
+## Implementation Details
 
-### ✅ **INNER JOIN Query**
-The `BookRepository` uses a custom JPQL query to fetch books with their author details:
+### SQL Join Operations
+
+The `BookRepository` implements a JPQL query that combines book and author data in a single operation:
+
 ```java
 @Query("SELECT new com.library.library_management.dto.BookAuthorDTO(" +
         "b.id, b.title, b.genre, b.publishedYear, b.price, a.name, a.nationality) " +
@@ -225,18 +220,22 @@ The `BookRepository` uses a custom JPQL query to fetch books with their author d
 List<BookAuthorDTO> findAllBooksWithAuthors();
 ```
 
-### 🔄 **Data Transfer Object Pattern**
-`BookAuthorDTO` provides a clean projection of book data without exposing entity internals.
+This approach avoids the N+1 query problem and returns a projection containing only necessary fields.
 
-### 💾 **Automatic Data Seeding**
-`DataSeeder` runs on application startup to populate sample data for testing.
+### Data Transfer Objects
 
-### 🎨 **Modern UI Components**
-- Gradient backgrounds
-- Smooth hover effects
-- Responsive tables
-- Form validation feedback
-- Success/Error messages
+The `BookAuthorDTO` class serves as a response object, providing a structured format for combined data without exposing internal entity details to the client layer.
+
+### Bootstrap Process
+
+The `DataSeeder` component executes automatically upon application startup, populating the database with sample records if no data exists, enabling immediate testing and demonstration.
+
+### User Interface
+
+- Form components with server-side validation error handling
+- Data tables with sortable columns and action buttons
+- Flash messages for user feedback (success/error notifications)
+- Responsive design adapting to various screen sizes
 
 ---
 
